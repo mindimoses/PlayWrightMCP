@@ -1,0 +1,8 @@
+[   -4722ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.saucedemo.com/:0
+[   -4305ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/unique-events/submit?universe=UNIVERSE&token=TOKEN:0
+[   -4304ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/summed-events/submit?universe=UNIVERSE&token=TOKEN:0
+[   -4273ms] [LOG] Content is cached for offline use. @ https://www.saucedemo.com/static/js/main.bcf4bc5f.js:1
+[    6168ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/unique-events/submit?universe=UNIVERSE&token=TOKEN:0
+[    6169ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/summed-events/submit?universe=UNIVERSE&token=TOKEN:0
+[   26640ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/unique-events/submit?universe=UNIVERSE&token=TOKEN:0
+[   26904ms] [ERROR] Failed to load resource: net::ERR_SSL_PROTOCOL_ERROR @ https://events.backtrace.io/api/summed-events/submit?universe=UNIVERSE&token=TOKEN:0
