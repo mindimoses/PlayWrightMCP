@@ -5,7 +5,7 @@ test.describe('Payment Application - Search Customer', () => {
   const TEST_USERNAME = 'TUAutoTest1';
   const TEST_PASSWORD = 'Tunisia123!@#';
   const VERIFICATION_CODE = '1111';
-  const MSISDN_RANGE = '%94000050 to %94000054'; // MSISDN range for looping
+  const MSISDN_RANGE = '%94000100 to %94000200'; // MSISDN range for looping
   const MAX_WAIT_TIME = 3 * 60 * 1000; // 3 minutes in milliseconds
 
   // Helper function to parse MSISDN range and generate array of numbers
@@ -262,8 +262,52 @@ test.describe('Payment Application - Search Customer', () => {
         continue;
       }
 
+      console.log('✓ Search button clicked successfully');
+
       // Wait for search results to load (reduced wait)
       await page.waitForTimeout(800);
+
+      // Extract and print Active label text
+      try {
+        const activeLabelText = await page.evaluate(() => {
+          const iframes = document.querySelectorAll('iframe');
+          
+          if (iframes.length > 0) {
+            const lastIframe = iframes[iframes.length - 1];
+            if (lastIframe && lastIframe.contentDocument) {
+              const doc = lastIframe.contentDocument;
+              
+              // Use XPath to find label with specific title and class
+              const xpath = "//label[@title='Active' and @class='bc_label bc_ui_ele bc']";
+              const result = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+              const activeLabel = result.singleNodeValue;
+              
+              if (activeLabel) {
+                return activeLabel.innerText || activeLabel.textContent;
+              }
+            }
+          }
+          
+          // Try in main page document
+          const xpath = "//label[@title='Active' and @class='bc_label bc_ui_ele bc']";
+          const result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+          const activeLabel = result.singleNodeValue;
+          
+          if (activeLabel) {
+            return activeLabel.innerText || activeLabel.textContent;
+          }
+          
+          return null;
+        });
+
+        if (activeLabelText) {
+          console.log(`✓ Active Label Text: ${activeLabelText.trim()}`);
+        } else {
+          console.log('⚠️  Active label with specified class not found on page for MSISDN "${MSISDN}"');
+        }
+      } catch (e) {
+        console.log(`⚠️  Error retrieving Active label text: ${e.message}`);
+      }
 
       // Verify search was executed successfully
       const pageContent = await page.locator('body').innerText().catch(() => '');
