@@ -5,7 +5,7 @@ test.describe('Payment Application - Search Customer', () => {
   const TEST_USERNAME = 'TUAutoTest1';
   const TEST_PASSWORD = 'Tunisia123!@#';
   const VERIFICATION_CODE = '1111';
-  const MSISDN_RANGE = '%94000100 to %94000200'; // MSISDN range for looping
+  const MSISDN_RANGE = '%94020639 to %94020641'; // MSISDN range for looping
   const MAX_WAIT_TIME = 3 * 60 * 1000; // 3 minutes in milliseconds
 
   // Helper function to parse MSISDN range and generate array of numbers
